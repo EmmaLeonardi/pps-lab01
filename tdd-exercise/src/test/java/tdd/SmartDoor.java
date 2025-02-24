@@ -2,8 +2,10 @@ package tdd;
 
 public class SmartDoor implements SmartDoorLock {
 
-    public SmartDoor(){
+    private boolean lockedDoor;
 
+    public SmartDoor(){
+        this.lockedDoor=false;
     }
 
     @Override
@@ -13,17 +15,18 @@ public class SmartDoor implements SmartDoorLock {
 
     @Override
     public void unlock(int pin) {
+        this.lockedDoor=false;
 
     }
 
     @Override
     public void lock() {
-
+        this.lockedDoor=true;
     }
 
     @Override
     public boolean isLocked() {
-        return false;
+        return this.lockedDoor;
     }
 
     @Override
