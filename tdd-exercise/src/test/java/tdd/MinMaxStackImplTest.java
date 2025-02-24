@@ -36,4 +36,26 @@ class MinMaxStackImplTest {
         assertEquals(retrieved, VALUE);
     }
 
+    @Test
+    public void testPopFail(){
+        assertThrows(IllegalStateException.class, ()->stack.pop());
+    }
+
+    @Test
+    public void testPeek(){
+        stack.push(VALUE);
+        var oldSize= stack.size();
+        stack.peek();
+        assertEquals(oldSize, stack.size());
+    }
+
+    @Test
+    public void testPeekFail(){
+        assertThrows(IllegalStateException.class, ()->stack.peek());
+    }
+
+
+
+
+
 }

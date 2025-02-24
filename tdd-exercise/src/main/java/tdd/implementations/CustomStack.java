@@ -32,7 +32,11 @@ public class CustomStack implements MinMaxStack {
 
     @Override
     public int peek() {
-        return 0;
+        if(!list.isEmpty()){
+            return list.getLast();
+        }else{
+            throw new IllegalStateException("The stack is empty");
+        }
     }
 
     @Override
