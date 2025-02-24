@@ -6,7 +6,8 @@ import static org.junit.jupiter.api.Assertions.*;
 
 public class SmartDoorLockTest {
     @Test
-    public void todo() {
-        assertTrue(true);
+    public void testInitiallyOpen() {
+        SmartDoorLock smartDoor=new SmartDoor();
+        assertFalse(smartDoor.isLocked());
     }
 }
