@@ -3,6 +3,8 @@ import example.model.BankAccount;
 import example.model.SimpleBankAccount;
 
 import org.junit.jupiter.api.*;
+import org.junit.jupiter.api.function.Executable;
+
 import static org.junit.jupiter.api.Assertions.*;
 
 /**
@@ -16,6 +18,7 @@ class SimpleBankAccountTest {
     private final int INITIAL_BALANCE=100;
     private final int WITHDRAW_AMOUNT=50;
     private final int WITHDRAW_FEE =1;
+    private final int WITHDRAW_MORE_THAN_AVAILABLE=INITIAL_BALANCE+WITHDRAW_AMOUNT;
 
     @BeforeEach
     void beforeEach(){
@@ -64,5 +67,12 @@ class SimpleBankAccountTest {
         depositInitialBalance();
         bankAccount.withdraw(accountHolder.getId(), WITHDRAW_AMOUNT);
         assertNotEquals(INITIAL_BALANCE-WITHDRAW_AMOUNT, bankAccount.getBalance());
+    }
+
+    @Test
+    void testWithdrawMoreThanAvailable(){
+        depositInitialBalance();
+        assertThrows(IllegalArgumentException.class, ()->bankAccount.withdraw(accountHolder.getId(), WITHDRAW_MORE_THAN_AVAILABLE));
+
     }
 }
