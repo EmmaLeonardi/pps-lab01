@@ -15,7 +15,7 @@ public interface SmartDoorLock {
      * When the door is locked or blocked, an exception is thrown.
      * @param pin The new 4-digit PIN.
      */
-    void setPin(int pin);
+    void setPin(String pin);
 
     /**
      * Attempts to unlock the door with a given PIN.
@@ -25,7 +25,7 @@ public interface SmartDoorLock {
      *
      * @param pin The PIN entered by the user.
      */
-    void unlock(int pin);
+    void unlock(String pin);
 
     /**
      * Locks the door.

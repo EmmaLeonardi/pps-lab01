@@ -6,7 +6,7 @@ public class SmartDoor implements SmartDoorLock {
 
     private boolean lockedDoor;
     private boolean blockedDoor;
-    private Integer pin;
+    private String pin;
     private int attempts;
 
     private final static int MAX_ATTEMPTS=5;
@@ -20,9 +20,13 @@ public class SmartDoor implements SmartDoorLock {
     }
 
     @Override
-    public void setPin(final int pin) {
+    public void setPin(final String pin) {
         if(!this.lockedDoor&&!this.blockedDoor){
-            this.pin=pin;
+            if(isPinLegal(pin)){
+                this.pin=pin;
+            }else{
+                throw new IllegalArgumentException("Pin must be 4 digits");
+            }
         }else{
             if(this.lockedDoor){
                 throw new IllegalStateException("Can't set the pin when the door is closed");
@@ -32,8 +36,20 @@ public class SmartDoor implements SmartDoorLock {
         }
     }
 
+    private boolean isPinLegal(String pin) {
+        if(pin.length()==4){
+            try {
+                Integer.parseInt(pin);
+                return true;
+            }catch (NumberFormatException e){
+                return false;
+            }
+        }
+        return false;
+    }
+
     @Override
-    public void unlock(final int pin) {
+    public void unlock(final String pin) {
         if(pin==this.pin&&!this.blockedDoor){
             this.lockedDoor=false;
         }else{

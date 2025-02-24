@@ -9,10 +9,14 @@ import static org.junit.jupiter.api.Assertions.*;
 
 public class SmartDoorLockTest {
 
-    private static final int WRONG_PIN = 4321;
+    private static final String PIN="1234";
+    private static final String WRONG_PIN = "4321";
+    private static final String NOT_NUMERIC_PIN ="abcd";
+    private static final String SMALL_PIN="1";
+
     private static final int MAX_ATTEMPTS = 5;
     SmartDoorLock smartDoor;
-    private static final int PIN=1234;
+
 
     @BeforeEach
     public void beforeEach(){
@@ -99,6 +103,14 @@ public class SmartDoorLockTest {
     @Test
     public void testLockWithoutPin(){
         assertThrows(IllegalStateException.class, ()->smartDoor.lock());
+    }
+
+    @Test
+    public void testSetInvalidPin(){
+        assertAll(
+                ()->assertThrows(IllegalArgumentException.class, ()->smartDoor.setPin(SMALL_PIN)),
+                ()->assertThrows(IllegalArgumentException.class, ()->smartDoor.setPin(NOT_NUMERIC_PIN))
+        );
     }
 
 
