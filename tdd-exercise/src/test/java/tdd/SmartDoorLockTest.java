@@ -113,6 +113,13 @@ public class SmartDoorLockTest {
         );
     }
 
+    @Test
+    public void testGetFailedAttempts(){
+        setPinAndClose();
+        smartDoor.unlock(WRONG_PIN);
+        assertEquals(smartDoor.getFailedAttempts(), 1);
+    }
+
 
 
 
