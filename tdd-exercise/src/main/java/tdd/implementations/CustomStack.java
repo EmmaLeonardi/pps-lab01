@@ -56,6 +56,6 @@ public class CustomStack implements MinMaxStack {
 
     @Override
     public int size() {
-        return 0;
+        return list.size();
     }
 }
