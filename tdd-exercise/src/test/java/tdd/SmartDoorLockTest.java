@@ -126,10 +126,14 @@ public class SmartDoorLockTest {
         manyWrongAttempts();
         if(smartDoor.isBlocked()){
             smartDoor.reset();
-            assertFalse(smartDoor.isBlocked());
+            assertAll(
+                    ()->assertFalse(smartDoor.isBlocked()),
+                    ()->assertFalse(smartDoor.isLocked()),
+                    ()->assertEquals(smartDoor.getFailedAttempts(),0)
+            );
         }
     }
-    
+
 
 
 
