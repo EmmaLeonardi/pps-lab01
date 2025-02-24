@@ -27,7 +27,13 @@ class MinMaxStackImplTest {
     public void testPush(){
         stack.push(VALUE);
         assertFalse(stack.isEmpty());
-        
+    }
+
+    @Test
+    public void testPop(){
+        stack.push(VALUE);
+        var retrieved=stack.pop();
+        assertEquals(retrieved, VALUE);
     }
 
 }

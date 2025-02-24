@@ -20,7 +20,14 @@ public class CustomStack implements MinMaxStack {
 
     @Override
     public int pop() {
-        return 0;
+        if(!list.isEmpty()){
+            var element=list.getLast();
+            list.removeLast();
+            return element;
+        }else{
+            throw new IllegalStateException("The stack is empty");
+        }
+
     }
 
     @Override
