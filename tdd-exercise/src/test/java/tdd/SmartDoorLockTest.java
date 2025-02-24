@@ -8,8 +8,9 @@ import static org.junit.jupiter.api.Assertions.*;
 
 public class SmartDoorLockTest {
 
+    private static final int WRONG_PIN = 4321;
     SmartDoorLock smartDoor;
-    final int PIN=1234;
+    private static final int PIN=1234;
 
     @BeforeEach
     public void beforeEach(){
@@ -33,6 +34,22 @@ public class SmartDoorLockTest {
     public void testCloseDoor(){
         smartDoor.setPin(PIN);
         smartDoor.lock();
+        assertTrue(smartDoor.isLocked());
+    }
+
+    @Test
+    public void testOpenDoor(){
+        smartDoor.setPin(PIN);
+        smartDoor.lock();
+        smartDoor.unlock(PIN);
+        assertFalse(smartDoor.isLocked());
+    }
+
+    @Test
+    public void testOpenDoorWrongPin(){
+        smartDoor.setPin(PIN);
+        smartDoor.lock();
+        smartDoor.unlock(WRONG_PIN);
         assertTrue(smartDoor.isLocked());
     }
 
