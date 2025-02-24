@@ -19,12 +19,12 @@ public class SmartDoor implements SmartDoorLock {
     }
 
     @Override
-    public void setPin(int pin) {
+    public void setPin(final int pin) {
         this.pin=pin;
     }
 
     @Override
-    public void unlock(int pin) {
+    public void unlock(final int pin) {
         if(pin==this.pin&&!this.blockedDoor){
             this.lockedDoor=false;
         }else{
@@ -52,7 +52,7 @@ public class SmartDoor implements SmartDoorLock {
 
     @Override
     public int getMaxAttempts() {
-        return 0;
+        return MAX_ATTEMPTS;
     }
 
     @Override

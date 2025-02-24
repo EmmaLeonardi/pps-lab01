@@ -1,8 +1,9 @@
 package tdd;
 
-import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
+import tdd.implementations.SmartDoor;
+import tdd.interfaces.SmartDoorLock;
 
 import static org.junit.jupiter.api.Assertions.*;
 
@@ -75,6 +76,11 @@ public class SmartDoorLockTest {
         manyWrongAttempts();
         smartDoor.unlock(PIN);
         assertTrue(smartDoor.isLocked());
+    }
+
+    @Test
+    public void testGetMaxAttempts(){
+        assertEquals(smartDoor.getMaxAttempts(), MAX_ATTEMPTS);
     }
 
 
