@@ -6,7 +6,7 @@ public class SmartDoor implements SmartDoorLock {
 
     private boolean lockedDoor;
     private boolean blockedDoor;
-    private int pin;
+    private Integer pin;
     private int attempts;
 
     private final static int MAX_ATTEMPTS=5;
@@ -16,6 +16,7 @@ public class SmartDoor implements SmartDoorLock {
         this.lockedDoor=false;
         this.blockedDoor=false;
         this.attempts=0;
+        this.pin=null;
     }
 
     @Override
@@ -45,7 +46,11 @@ public class SmartDoor implements SmartDoorLock {
 
     @Override
     public void lock() {
-        this.lockedDoor=true;
+        if(pin==null){
+            throw new IllegalStateException("Can't lock the door when the pin is not set");
+        }else{
+            this.lockedDoor=true;
+        }
     }
 
     @Override
