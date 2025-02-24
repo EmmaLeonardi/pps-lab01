@@ -58,7 +58,6 @@ public interface SmartDoorLock {
     /**
      * Gets the number of failed unlock attempts.
      *
-     *
      * @return The number of failed attempts.
      */
     int getFailedAttempts();

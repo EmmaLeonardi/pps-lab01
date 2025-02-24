@@ -134,6 +134,17 @@ public class SmartDoorLockTest {
         }
     }
 
+    @Test
+    public void testResetDoorAndSetPin(){
+        setPinAndClose();
+        manyWrongAttempts();
+        smartDoor.reset();
+        smartDoor.setPin(WRONG_PIN);
+        smartDoor.lock();
+        smartDoor.unlock(WRONG_PIN);
+        assertFalse(smartDoor.isLocked());
+    }
+
 
 
 
