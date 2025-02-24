@@ -2,10 +2,20 @@ package tdd.implementations;
 
 import tdd.interfaces.MinMaxStack;
 
+import java.util.ArrayList;
+import java.util.List;
+
 public class CustomStack implements MinMaxStack {
+
+    private final List<Integer> list;
+
+    public CustomStack(){
+        this.list=new ArrayList<>();
+    }
+
     @Override
     public void push(int value) {
-
+        list.add(value);
     }
 
     @Override
@@ -30,7 +40,7 @@ public class CustomStack implements MinMaxStack {
 
     @Override
     public boolean isEmpty() {
-        return true;
+        return list.isEmpty();
     }
 
     @Override
