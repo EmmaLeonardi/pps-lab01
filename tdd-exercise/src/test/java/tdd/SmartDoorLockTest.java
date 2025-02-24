@@ -18,6 +18,17 @@ public class SmartDoorLockTest {
         smartDoor=new SmartDoor();
     }
 
+    public void setPinAndClose(){
+        smartDoor.setPin(PIN);
+        smartDoor.lock();
+    }
+
+    public void manyWrongAttempts(){
+        for (int i = 0; i <MAX_ATTEMPTS; i++) {
+            smartDoor.unlock(WRONG_PIN);
+        }
+    }
+
     @Test
     public void testInitiallyOpen() {
         assertFalse(smartDoor.isLocked());
@@ -33,34 +44,37 @@ public class SmartDoorLockTest {
 
     @Test
     public void testCloseDoor(){
-        smartDoor.setPin(PIN);
-        smartDoor.lock();
+        setPinAndClose();
         assertTrue(smartDoor.isLocked());
     }
 
     @Test
     public void testOpenDoor(){
-        smartDoor.setPin(PIN);
-        smartDoor.lock();
+        setPinAndClose();
         smartDoor.unlock(PIN);
         assertFalse(smartDoor.isLocked());
     }
 
     @Test
     public void testOpenDoorWrongPin(){
-        smartDoor.setPin(PIN);
-        smartDoor.lock();
+        setPinAndClose();
         smartDoor.unlock(WRONG_PIN);
         assertTrue(smartDoor.isLocked());
     }
 
     @Test
     public void testBlockDoor(){
-        smartDoor.setPin(PIN);
-        for (int i = 0; i <MAX_ATTEMPTS; i++) {
-            smartDoor.unlock(WRONG_PIN);
-        }
+        setPinAndClose();
+        manyWrongAttempts();
         assertTrue(smartDoor.isBlocked());
+    }
+
+    @Test
+    public void testBlockDoorAndOpen(){
+        setPinAndClose();
+        manyWrongAttempts();
+        smartDoor.unlock(PIN);
+        assertTrue(smartDoor.isLocked());
     }
 
 

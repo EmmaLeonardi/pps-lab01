@@ -23,7 +23,7 @@ public class SmartDoor implements SmartDoorLock {
 
     @Override
     public void unlock(int pin) {
-        if(pin==this.pin){
+        if(pin==this.pin&&!this.blockedDoor){
             this.lockedDoor=false;
         }else{
             this.attempts++;
