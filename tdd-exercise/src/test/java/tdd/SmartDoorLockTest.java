@@ -120,6 +120,17 @@ public class SmartDoorLockTest {
         assertEquals(smartDoor.getFailedAttempts(), 1);
     }
 
+    @Test
+    public void testResetDoor(){
+        setPinAndClose();
+        manyWrongAttempts();
+        if(smartDoor.isBlocked()){
+            smartDoor.reset();
+            assertFalse(smartDoor.isBlocked());
+        }
+    }
+    
+
 
 
 
