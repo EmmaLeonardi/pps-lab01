@@ -20,7 +20,15 @@ public class SmartDoor implements SmartDoorLock {
 
     @Override
     public void setPin(final int pin) {
-        this.pin=pin;
+        if(!this.lockedDoor&&!this.blockedDoor){
+            this.pin=pin;
+        }else{
+            if(this.lockedDoor){
+                throw new IllegalStateException("Can't set the pin when the door is closed");
+            }else if(this.blockedDoor){
+                throw new IllegalStateException("Can't set the pin when the door is blocked");
+            }
+        }
     }
 
     @Override
