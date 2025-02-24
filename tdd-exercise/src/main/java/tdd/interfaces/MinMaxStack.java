@@ -1,4 +1,4 @@
-package tdd;
+package tdd.interfaces;
 
 /**
  * Task 2 - TDD for Min Max Stack

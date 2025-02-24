@@ -1,4 +1,6 @@
-package tdd;
+package tdd.implementations;
+
+import tdd.interfaces.SmartDoorLock;
 
 public class SmartDoor implements SmartDoorLock {
 

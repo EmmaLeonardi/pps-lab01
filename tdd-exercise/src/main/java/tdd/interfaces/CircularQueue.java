@@ -1,4 +1,4 @@
-package tdd;
+package tdd.interfaces;
 
 /**
  *  Task 3 - TDD for Circular Queue
