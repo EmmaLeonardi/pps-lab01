@@ -4,7 +4,6 @@ import tdd.interfaces.CircularQueue;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.stream.Collectors;
 
 public class CircularList implements CircularQueue {
 
@@ -36,6 +35,13 @@ public class CircularList implements CircularQueue {
             queue.removeFirst();
         }
         queue.add(element);
+    }
+
+    @Override
+    public void removeOldest() {
+        if(queue.size()>0){
+            queue.removeFirst();
+        }
     }
 
     @Override

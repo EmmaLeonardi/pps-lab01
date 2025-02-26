@@ -20,4 +20,6 @@ public interface CircularQueue {
     int getSize();
 
     void add(int element);
+
+    void removeOldest();
 }

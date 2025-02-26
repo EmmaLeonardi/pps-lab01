@@ -45,4 +45,13 @@ public class CircularListTest {
         }
         assertEquals(circularQueue.getSize(), circularQueue.getMaxSize());
     }
+
+    @Test
+    public void testRemoveOldest(){
+        for (int i=0; i<=circularQueue.getMaxSize(); i++){
+            circularQueue.add(i);
+        }
+        circularQueue.removeOldest();
+        assertEquals(circularQueue.getSize(), circularQueue.getMaxSize()-1);
+    }
 }
