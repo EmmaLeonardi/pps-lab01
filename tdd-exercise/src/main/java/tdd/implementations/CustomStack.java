@@ -3,6 +3,7 @@ package tdd.implementations;
 import tdd.interfaces.MinMaxStack;
 
 import java.util.*;
+import java.util.concurrent.Callable;
 
 public class CustomStack implements MinMaxStack {
 
@@ -54,7 +55,11 @@ public class CustomStack implements MinMaxStack {
 
     @Override
     public int getMax() {
-        return orderedList.getLast();
+        if(!stackList.isEmpty()) {
+            return orderedList.getLast();
+        }else{
+            throw new IllegalStateException("The stack is empty");
+        }
     }
 
     @Override
