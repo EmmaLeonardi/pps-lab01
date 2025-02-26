@@ -22,6 +22,12 @@ public class CircularListTest {
         circularQueue=new CircularList(LIST_SIZE);
     }
 
+    public void fillQueue(){
+        for (int i=0; i<=circularQueue.getMaxSize(); i++){
+            circularQueue.add(i);
+        }
+    }
+
     @Test
     public void testMaxSize() {
         assertEquals(LIST_SIZE, circularQueue.getMaxSize());
@@ -40,18 +46,19 @@ public class CircularListTest {
 
     @Test
     public void testAddElementWithFullQueue(){
-        for (int i=0; i<=circularQueue.getMaxSize(); i++){
-            circularQueue.add(i);
-        }
+        fillQueue();
         assertEquals(circularQueue.getSize(), circularQueue.getMaxSize());
     }
 
     @Test
     public void testRemoveOldest(){
-        for (int i=0; i<=circularQueue.getMaxSize(); i++){
-            circularQueue.add(i);
-        }
+        fillQueue();
         circularQueue.removeOldest();
         assertEquals(circularQueue.getSize(), circularQueue.getMaxSize()-1);
+    }
+
+    @Test
+    public void testIsEmpty(){
+        assertTrue(circularQueue.isEmpty());
     }
 }

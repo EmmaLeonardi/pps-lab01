@@ -45,6 +45,11 @@ public class CircularList implements CircularQueue {
     }
 
     @Override
+    public boolean isEmpty() {
+        return queue.isEmpty();
+    }
+
+    @Override
     public String toString() {
         StringBuilder queueString= new StringBuilder();
         for(var element : queue){

@@ -22,4 +22,6 @@ public interface CircularQueue {
     void add(int element);
 
     void removeOldest();
+
+    boolean isEmpty();
 }
