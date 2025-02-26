@@ -39,7 +39,7 @@ public class CircularList implements CircularQueue {
 
     @Override
     public int removeOldest() {
-        if(queue.isEmpty()){
+        if(!queue.isEmpty()){
             return queue.removeFirst();
         }else{
             throw new IllegalStateException("Can't remove an element from an empty list");
@@ -49,6 +49,15 @@ public class CircularList implements CircularQueue {
     @Override
     public boolean isEmpty() {
         return queue.isEmpty();
+    }
+
+    @Override
+    public int removeNewest() {
+        if(!queue.isEmpty()){
+            return queue.removeLast();
+        }else{
+            throw new IllegalStateException("Can't remove an element from an empty list");
+        }
     }
 
     @Override

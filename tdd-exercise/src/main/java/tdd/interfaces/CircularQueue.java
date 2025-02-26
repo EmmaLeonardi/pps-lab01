@@ -51,4 +51,12 @@ public interface CircularQueue {
      * @return true if the list is empty.
      */
     boolean isEmpty();
+
+    /***
+     * Removes and returns the newest element.
+     *
+     * @return the removed element.
+     * @throws IllegalStateException if the list is empty.
+     */
+    int removeNewest();
 }

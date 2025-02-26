@@ -57,6 +57,13 @@ public class CircularListTest {
     }
 
     @Test
+    public void testRemoveOldestIsCorrect(){
+        circularQueue.add(VALUE);
+        final int retrived=circularQueue.removeOldest();
+        assertEquals(VALUE, retrived);
+    }
+
+    @Test
     public void testRemoveOldestFail(){
         assertThrows(IllegalStateException.class, ()->circularQueue.removeOldest());
     }
@@ -64,5 +71,12 @@ public class CircularListTest {
     @Test
     public void testIsEmpty(){
         assertTrue(circularQueue.isEmpty());
+    }
+
+    @Test
+    public void testRemoveNewest(){
+        fillQueue();
+        circularQueue.removeNewest();
+        assertEquals(circularQueue.getSize(), circularQueue.getMaxSize()-1);
     }
 }
