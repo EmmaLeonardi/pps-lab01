@@ -68,4 +68,12 @@ public interface CircularQueue {
      * @throws IllegalStateException if the list is empty.
      */
     int peekNewest();
+
+    /***
+     * Returns the oldest element without changing the list
+     *
+     * @return the oldest element.
+     * @throws IllegalStateException if the list is empty.
+     */
+    int peekOldest();
 }

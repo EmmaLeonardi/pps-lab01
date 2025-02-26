@@ -99,4 +99,22 @@ public class CircularListTest {
         assertAll(()->assertEquals(peeked, VALUE),
                 ()->assertFalse(circularQueue.isEmpty()));
     }
+
+    @Test
+    public void testPeekNewestFail(){
+        assertThrows(IllegalStateException.class, ()->circularQueue.peekNewest());
+    }
+
+    @Test
+    public void testPeekOldest(){
+        circularQueue.add(VALUE);
+        final int peeked=circularQueue.peekOldest();
+        assertAll(()->assertEquals(peeked, VALUE),
+                ()->assertFalse(circularQueue.isEmpty()));
+    }
+
+    @Test
+    public void testPeekOldestFail(){
+        assertThrows(IllegalStateException.class, ()->circularQueue.peekOldest());
+    }
 }

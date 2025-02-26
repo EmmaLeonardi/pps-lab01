@@ -70,6 +70,15 @@ public class CircularList implements CircularQueue {
     }
 
     @Override
+    public int peekOldest() {
+        if(!queue.isEmpty()){
+            return queue.getFirst();
+        }else{
+            throw new IllegalStateException("Can't get an element from an empty list");
+        }
+    }
+
+    @Override
     public String toString() {
         StringBuilder queueString= new StringBuilder();
         for(var element : queue){
