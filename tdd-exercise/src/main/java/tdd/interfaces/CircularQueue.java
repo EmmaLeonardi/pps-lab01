@@ -13,4 +13,7 @@ package tdd.interfaces;
  *   - Introduce methods in the interface in order to make the tests pass.
  *   - Refactor
  */
-public interface CircularQueue { }
+public interface CircularQueue {
+
+    int getMaxSize();
+}
