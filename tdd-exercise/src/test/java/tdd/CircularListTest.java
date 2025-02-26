@@ -37,4 +37,12 @@ public class CircularListTest {
         circularQueue.add(VALUE);
         assertTrue(circularQueue.getSize()>0);
     }
+
+    @Test
+    public void testAddElementWithFullQueue(){
+        for (int i=0; i<=circularQueue.getMaxSize(); i++){
+            circularQueue.add(i);
+        }
+        assertEquals(circularQueue.getSize(), circularQueue.getMaxSize());
+    }
 }
