@@ -9,9 +9,12 @@ import static org.junit.jupiter.api.Assertions.*;
 
 class MinMaxStackImplTest {
 
-    final private int VALUE=3;
+    final private int TEST_VALUE =3;
+    final private int MAX_ITERATIONS=5;
+    final private int MIN_ITERATIONS=1;
 
     MinMaxStack stack;
+
 
     @BeforeEach
     public void beforeEach(){
@@ -25,15 +28,15 @@ class MinMaxStackImplTest {
 
     @Test
     public void testPush(){
-        stack.push(VALUE);
+        stack.push(TEST_VALUE);
         assertFalse(stack.isEmpty());
     }
 
     @Test
     public void testPop(){
-        stack.push(VALUE);
+        stack.push(TEST_VALUE);
         var retrieved=stack.pop();
-        assertEquals(retrieved, VALUE);
+        assertEquals(retrieved, TEST_VALUE);
     }
 
     @Test
@@ -43,7 +46,7 @@ class MinMaxStackImplTest {
 
     @Test
     public void testPeek(){
-        stack.push(VALUE);
+        stack.push(TEST_VALUE);
         var oldSize= stack.size();
         stack.peek();
         assertEquals(oldSize, stack.size());
@@ -52,6 +55,14 @@ class MinMaxStackImplTest {
     @Test
     public void testPeekFail(){
         assertThrows(IllegalStateException.class, ()->stack.peek());
+    }
+
+    @Test
+    public void testGetMin(){
+        for(int i=MIN_ITERATIONS;i<=MAX_ITERATIONS; i++){
+            stack.push(i);
+        }
+        assertEquals(stack.getMin(), MIN_ITERATIONS);
     }
 
 

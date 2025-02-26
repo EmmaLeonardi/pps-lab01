@@ -2,27 +2,31 @@ package tdd.implementations;
 
 import tdd.interfaces.MinMaxStack;
 
-import java.util.ArrayList;
-import java.util.List;
+import java.util.*;
 
 public class CustomStack implements MinMaxStack {
 
-    private final List<Integer> list;
+    private final List<Integer> stackList;
+    private final List<Integer> orderedList;
 
     public CustomStack(){
-        this.list=new ArrayList<>();
+        this.stackList =new ArrayList<>();
+        this.orderedList=new ArrayList<>();
     }
 
     @Override
     public void push(int value) {
-        list.add(value);
+        stackList.add(value);
+        orderedList.add(value);
+        Collections.sort(orderedList);
     }
 
     @Override
     public int pop() {
-        if(!list.isEmpty()){
-            var element=list.getLast();
-            list.removeLast();
+        if(!stackList.isEmpty()){
+            var element= stackList.getLast();
+            stackList.removeLast();
+            orderedList.remove(element);
             return element;
         }else{
             throw new IllegalStateException("The stack is empty");
@@ -32,8 +36,8 @@ public class CustomStack implements MinMaxStack {
 
     @Override
     public int peek() {
-        if(!list.isEmpty()){
-            return list.getLast();
+        if(!stackList.isEmpty()){
+            return stackList.getLast();
         }else{
             throw new IllegalStateException("The stack is empty");
         }
@@ -41,7 +45,7 @@ public class CustomStack implements MinMaxStack {
 
     @Override
     public int getMin() {
-        return 0;
+        return orderedList.getFirst();
     }
 
     @Override
@@ -51,11 +55,11 @@ public class CustomStack implements MinMaxStack {
 
     @Override
     public boolean isEmpty() {
-        return list.isEmpty();
+        return stackList.isEmpty();
     }
 
     @Override
     public int size() {
-        return list.size();
+        return stackList.size();
     }
 }
