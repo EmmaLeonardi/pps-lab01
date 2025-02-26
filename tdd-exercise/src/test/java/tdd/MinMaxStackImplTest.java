@@ -48,8 +48,12 @@ class MinMaxStackImplTest {
     public void testPeek(){
         stack.push(TEST_VALUE);
         var oldSize= stack.size();
-        stack.peek();
-        assertEquals(oldSize, stack.size());
+        var element=stack.peek();
+        assertAll(
+                ()->assertEquals(oldSize, stack.size()),
+                ()->assertEquals(element, TEST_VALUE)
+        );
+        ;
     }
 
     @Test
