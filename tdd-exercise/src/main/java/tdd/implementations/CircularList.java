@@ -17,4 +17,9 @@ public class CircularList implements CircularQueue {
     public int getMaxSize(){
         return maxSizeQueue;
     }
+
+    @Override
+    public int getSize() {
+        return 0;
+    }
 }

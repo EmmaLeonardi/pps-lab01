@@ -17,4 +17,10 @@ public class CircularListTest {
         CircularQueue circularQueue=new CircularList(5);
         assertEquals(5, circularQueue.getMaxSize());
     }
+
+    @Test
+    public void testActualSize(){
+        CircularQueue circularQueue=new CircularList(5);
+        assertEquals(0, circularQueue.getSize());
+    }
 }

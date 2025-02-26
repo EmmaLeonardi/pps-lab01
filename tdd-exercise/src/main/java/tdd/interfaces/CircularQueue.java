@@ -16,4 +16,6 @@ package tdd.interfaces;
 public interface CircularQueue {
 
     int getMaxSize();
+
+    int getSize();
 }
