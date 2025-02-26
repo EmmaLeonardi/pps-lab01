@@ -54,7 +54,7 @@ public class CustomStack implements MinMaxStack {
 
     @Override
     public int getMax() {
-        return 0;
+        return orderedList.getLast();
     }
 
     @Override

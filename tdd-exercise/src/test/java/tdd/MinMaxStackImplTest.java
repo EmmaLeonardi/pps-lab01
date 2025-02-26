@@ -70,6 +70,14 @@ class MinMaxStackImplTest {
         assertThrows(IllegalStateException.class, ()->stack.getMin());
     }
 
+    @Test
+    public void testGetMax(){
+        for(int i=MIN_ITERATIONS;i<=MAX_ITERATIONS; i++){
+            stack.push(i);
+        }
+        assertEquals(stack.getMax(), MAX_ITERATIONS);
+    }
+
 
 
 
