@@ -5,8 +5,7 @@ import org.junit.jupiter.api.Test;
 import tdd.implementations.CircularList;
 import tdd.interfaces.CircularQueue;
 
-import static org.junit.jupiter.api.Assertions.assertEquals;
-import static org.junit.jupiter.api.Assertions.assertTrue;
+import static org.junit.jupiter.api.Assertions.*;
 
 /**
  * The test suite for testing the CircularList implementation
@@ -55,6 +54,11 @@ public class CircularListTest {
         fillQueue();
         circularQueue.removeOldest();
         assertEquals(circularQueue.getSize(), circularQueue.getMaxSize()-1);
+    }
+
+    @Test
+    public void testRemoveOldestFail(){
+        assertThrows(IllegalStateException.class, ()->circularQueue.removeOldest());
     }
 
     @Test

@@ -15,13 +15,40 @@ package tdd.interfaces;
  */
 public interface CircularQueue {
 
+    /***
+     * Gets the maximum size of the circular queue.
+     *
+     * @return the maximum size of the circular queue.
+     */
     int getMaxSize();
 
+    /***
+     * Gets the actual size of the circular queue.
+     *
+     * @return the actual size of the circular queue.
+     */
     int getSize();
 
+    /***
+     * Adds the element to the circular queue.
+     * If the queue is full, the oldest element is overwritten.
+     *
+     * @param element the element added to the circular queue.
+     */
     void add(int element);
 
-    void removeOldest();
+    /***
+     * Removes and returns the oldest element.
+     *
+     * @return the removed element.
+     * @throws IllegalStateException if the list is empty.
+     */
+    int removeOldest();
 
+    /***
+     * Gets if the list is empty.
+     *
+     * @return true if the list is empty.
+     */
     boolean isEmpty();
 }

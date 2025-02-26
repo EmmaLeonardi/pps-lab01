@@ -38,9 +38,11 @@ public class CircularList implements CircularQueue {
     }
 
     @Override
-    public void removeOldest() {
-        if(queue.size()>0){
-            queue.removeFirst();
+    public int removeOldest() {
+        if(queue.isEmpty()){
+            return queue.removeFirst();
+        }else{
+            throw new IllegalStateException("Can't remove an element from an empty list");
         }
     }
 
