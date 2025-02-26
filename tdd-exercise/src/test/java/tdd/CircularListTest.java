@@ -79,4 +79,24 @@ public class CircularListTest {
         circularQueue.removeNewest();
         assertEquals(circularQueue.getSize(), circularQueue.getMaxSize()-1);
     }
+
+    @Test
+    public void testRemoveNewestFail(){
+        assertThrows(IllegalStateException.class, ()->circularQueue.removeNewest());
+    }
+
+    @Test
+    public void testRemoveNewestIsCorrect(){
+        circularQueue.add(VALUE);
+        final int retrived=circularQueue.removeNewest();
+        assertEquals(VALUE, retrived);
+    }
+
+    @Test
+    public void testPeekNewest(){
+        circularQueue.add(VALUE);
+        final int peeked=circularQueue.peekNewest();
+        assertAll(()->assertEquals(peeked, VALUE),
+                ()->assertFalse(circularQueue.isEmpty()));
+    }
 }
