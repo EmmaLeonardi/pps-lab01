@@ -18,4 +18,6 @@ public interface CircularQueue {
     int getMaxSize();
 
     int getSize();
+
+    void add(int element);
 }

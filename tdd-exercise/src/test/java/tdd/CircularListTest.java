@@ -1,5 +1,6 @@
 package tdd;
 
+import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import tdd.implementations.CircularList;
 import tdd.interfaces.CircularQueue;
@@ -12,15 +13,28 @@ import static org.junit.jupiter.api.Assertions.assertTrue;
  */
 public class CircularListTest {
 
+    public final int LIST_SIZE=5;
+    public final int VALUE=7;
+    public CircularQueue circularQueue;
+
+    @BeforeEach
+    public void beforeEach(){
+        circularQueue=new CircularList(LIST_SIZE);
+    }
+
     @Test
     public void testMaxSize() {
-        CircularQueue circularQueue=new CircularList(5);
-        assertEquals(5, circularQueue.getMaxSize());
+        assertEquals(LIST_SIZE, circularQueue.getMaxSize());
     }
 
     @Test
     public void testActualSize(){
-        CircularQueue circularQueue=new CircularList(5);
         assertEquals(0, circularQueue.getSize());
+    }
+
+    @Test
+    public void testAddElement(){
+        circularQueue.add(VALUE);
+        assertTrue(circularQueue.getSize()>0);
     }
 }
