@@ -45,7 +45,11 @@ public class CustomStack implements MinMaxStack {
 
     @Override
     public int getMin() {
-        return orderedList.getFirst();
+        if(!stackList.isEmpty()){
+            return orderedList.getFirst();
+        }else{
+            throw new IllegalStateException("The stack is empty");
+        }
     }
 
     @Override
